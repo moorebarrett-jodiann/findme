@@ -4,8 +4,8 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="author" content="Jodi-Ann Barrett"/>
-        <meta name="description" content="Cookies"/>
-        <meta name="keywords" content="HTML, CSS, SEO, JavaScript, Node.js, ES, web, web development, Inheritance, OOP, DOM"/>
+        <meta name="description" content="Find Me Geolocation Website"/>
+        <meta name="keywords" content="HTML, CSS, SEO, JavaScript, Node.js, ES, web, web development, Inheritance, OOP, DOM, Geolocation, Map"/>
         <link rel="shortcut icon" href="src/images/favicon.png?v=2" type="image/x-icon"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,37 +17,53 @@
         <link rel="stylesheet" href="src/stylesheet/index.css" media="all"/>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
         <script src="src/scripts/index.js" defer></script>
-        <title>Cookies</title>
+        <title>Find Me</title>
     </head>
     <body>
         <main> 
             <header>
                 <div class="container flexbox">
                     <div class="title">
-                        <h1>Find Me</h1>
+                        <h1><i class="fa-solid fa-magnifying-glass-location"></i> Find Me</h1>
                     </div>
                     <nav>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#" class="about-modal">About</a></li>
                         </ul>
                     </nav>
                 </div>
             </header>     
+            <div class="container">
+                <div class="details">
+                    <div class="heading">
+                        <h1>My location now</h1>
+                        <p>Your current location right now is shown on the map below as a blue marker.</p>
+                    </div>
+                    <div class="lat-long">
+                        <h3>What are my coordinates?</h3>
+                        <p>Latitude: <span class="latitude"></span></p>
+                        <p>Longitude: <span class="longitude"></span></p>
+                    </div>
+                </div>           
+            </div>            
             <section>
-                <div class="container">
-                    
-                </div>            
-            </section>      
+                <div id='map'></div>
+            </section> 
+            
+            <footer>
+                <div class="container flexbox">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; 2022 Jodi-Ann Barrett</p>
+                    </div>
+                </div>
+            </footer>
         </main>
-        <script>
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-            window.addEventListener('resize', () => {
-              vh = window.innerHeight * 0.01;
-              document.documentElement.style.setProperty('--vh', `${vh}px`);
-            });
-       </script>
     </body>
 </html>

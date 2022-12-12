@@ -3,7 +3,7 @@
 :root {
     --app-dark-grey-bg:#2c2d33;
     --app-dark-bg:#131313;
-    --app-light-bg:#e0e0e0;
+    --app-light-bg:#f1f2f3;
     --app-light-text-color:rgb(244, 246, 248);
     --app-red:#ff3c57;
     --app-green:#46737C;
@@ -19,13 +19,14 @@
 
     --app-letter-spacing: 0.2px;
     --app-header-line-height: 56px;
+    --app-footer-line-height: 40px;
     --app-text-line-height: 50px;
     --app-h2-font-size: 17px;
     --app-p-font-size: 14px;
 }
     
 body {
-    background: var(--app-dark-blue);
+    background: var(--app-light-bg);
 }
 
 .container {
@@ -39,7 +40,6 @@ body {
 
 .flexbox {
     display: flex;
-    justify-content: space-between;
 }
 
 /**************************************************/
@@ -50,6 +50,11 @@ header {
     background-color: var(--app-blue);
     line-height: var(--app-header-line-height);
     height: 56px;
+}
+
+header .title {
+    width: 100%;
+    text-align: center;
 }
 
 header h1 {
@@ -73,18 +78,161 @@ nav ul li + li {
 nav ul li a {
     font-size: 17px;
     font-weight: 600;
-    letter-spacing: var(--app-letter-spcaing);
+    letter-spacing: var(--app-letter-spacing);
     cursor: pointer;
     transition: color 0.25s ease-in-out;
     text-decoration: none;
     color: var(--app-light-text-color);
+    position: relative;
 }
 
-nav ul li a:hover {
-    border-bottom: 1px solid var(--app-light-text-color);
+/* Scale from center */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--app-light-text-color);
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+}
+
+nav ul li a::after {
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after{
+    transform: scale(1);
 }
 
 /**************************************************/
 /*****      MAIN                             ******/
 /**************************************************/
 
+.container .details {
+    margin: 20px 0px;
+}
+
+.container .details .heading {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container .details .heading h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--app-dark-text-color);
+}
+
+.container .details .lat-long {
+    color: var(--app-dark-text-color);
+    text-align: left;
+}
+
+section {
+    min-height: calc(100vh - 56px - 112px);
+    position: relative;
+}
+
+section #map { 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/**************************************************/
+/*****          Overlay Screens              ******/
+/**************************************************/
+
+dialog {
+    width: 300px;
+    background-color: var(--app-white);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    border-radius: 10px;
+    padding: 20px;
+    animation: appearDown 0.25s ease-out;
+}
+
+dialog::backdrop {
+    background-color: rgb(13 16 19 / 0.3);
+    backdrop-filter: blur(10px);
+}
+
+dialog h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--app-dark-text-color);
+    margin-bottom: 10px;
+}
+
+dialog p {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--app-dark-text-color);
+    margin-bottom: 15px;
+}
+
+/**************************************************/
+/*****      FOOTER                           ******/
+/**************************************************/
+
+footer {
+    height: 112px;
+    background-color: var(--app-purple);
+    padding: 36px 0;
+    z-index: 9999;
+}
+
+footer .flexbox {
+    justify-content: space-between;
+}
+
+/* Footer Social */
+footer .social-icons ul {
+    list-style: none;
+}
+
+footer .social-icons ul li {
+    display: inline;
+}
+
+footer .social-icons ul li + li {
+    margin-left: 20px;
+}
+
+footer .social-icons ul li {
+    font-size: 17px;
+    color: var(--app-light-text-color);
+    font-weight: 400;
+    letter-spacing: var(--app-letter-spacing);
+    line-height: var(--app-footer-line-height);
+}
+
+footer .social-icons ul li a {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: var(--app-letter-spacing);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--app-light-text-color);
+}
+
+/* Icon Hover effect */
+footer .social-icons ul li:hover {
+    cursor: pointer;
+}
+
+/* Footer Copyright */
+footer .copyright p {
+    font-size: 17px;
+    color: var(--app-light-text-color);
+    font-weight: 400;
+    letter-spacing: var(--app-letter-spacing);
+    line-height: var(--app-footer-line-height);
+}
