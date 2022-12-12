@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+dialog {
+  margin: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -33,9 +37,9 @@ body {
   height: 100%;
 }
 
-ul, ol {
+/* ul, ol {
   list-style: none;
-}
+} */
 
 img, picture, video, canvas, svg {
   display: block;

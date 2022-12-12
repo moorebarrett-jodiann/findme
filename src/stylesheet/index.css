@@ -151,8 +151,8 @@ section #map {
 /**************************************************/
 
 dialog {
-    width: 300px;
-    background-color: var(--app-white);
+    width: 410px;
+    background-color: var(--app-light-bg);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
     border-radius: 10px;
     padding: 20px;
@@ -167,12 +167,31 @@ dialog::backdrop {
 dialog h2 {
     font-size: 22px;
     font-weight: 600;
-    color: var(--app-dark-text-color);
+    color: var(--app-dark-blue);
     margin-bottom: 10px;
+    text-align: center;
 }
 
-dialog p {
+dialog .about span {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--app-purple);
+}
+
+dialog .about p {
     font-size: 16px;
+    font-weight: 400;
+    color: var(--app-dark-text-color);
+    margin-bottom: 15px;
+}
+
+dialog .how-to {    
+    border-top: 1px solid rgba(35, 46, 209, 0.3);
+    padding: 20px;
+}
+
+dialog .how-to ul {
+    font-size: 15px;
     font-weight: 400;
     color: var(--app-dark-text-color);
     margin-bottom: 15px;
@@ -235,4 +254,19 @@ footer .copyright p {
     font-weight: 400;
     letter-spacing: var(--app-letter-spacing);
     line-height: var(--app-footer-line-height);
+}
+
+/**************************************************/
+/*****       Animations                      ******/
+/**************************************************/
+
+@keyframes appearDown {
+    from {
+        opacity: 0;
+        transform: translate(0px, -10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
