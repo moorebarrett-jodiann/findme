@@ -53,7 +53,7 @@ function getLocation(position) {
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [longitude, latitude], // starting position [lng, lat]
         zoom: 15, // starting zoom,
-        pitch: 70 // pitch in degrees
+        pitch: 60 // pitch in degrees
     });
     
     overlay.style.display = 'none';
@@ -114,7 +114,7 @@ function showSlides(n) {
     for (let i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-
+    
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
 }
