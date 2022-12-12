@@ -11,9 +11,7 @@
     --app-orange:#ff833c;
     --app-light-blue:#89D2DC;
     --app-blue:#232ED1;
-    --app-dark-blue:#101D42;
-    --app-btn-height: 46px;
-    --app-btn-width: 100%;
+    --app-dark-blue: #2B4162;
     --app-light-text-color: #f4f6f8;
     --app-dark-text-color: #1c1c1c;
 
@@ -47,7 +45,6 @@ body {
 /**************************************************/
 
 header {
-    /* background-color: #042A2B; */
     line-height: 112px;
     height: 112px;
     position: absolute;
@@ -112,7 +109,7 @@ section .overlay {
 }
 
 section .overlay .loader {
-    border: 5px solid #2B4162;
+    border: 5px solid var(--app-dark-blue);
     border-top: 5px solid rgba(0, 0, 0, 0.01);
     border-radius: 50%;
     width: 35px;
@@ -164,7 +161,6 @@ section #map {
     font-weight: 700;
 }
   
-/* Next & previous buttons */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -244,10 +240,9 @@ footer .social-icons ul li a {
     line-height: var(--app-footer-line-height);
     cursor: pointer;
     text-decoration: none;
-    color: #2B4162;
+    color: var(--app-dark-blue);
 }
 
-/* Icon Hover effect */
 footer .social-icons ul li:hover {
     cursor: pointer;
 }
@@ -255,7 +250,7 @@ footer .social-icons ul li:hover {
 /* Footer Copyright */
 footer .copyright p {
     font-size: 17px;
-    color: #2B4162;
+    color: var(--app-dark-blue);
     font-weight: 400;
     letter-spacing: var(--app-letter-spacing);
     line-height: var(--app-footer-line-height);
