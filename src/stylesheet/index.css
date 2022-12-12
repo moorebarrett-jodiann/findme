@@ -40,7 +40,6 @@ body {
 
 .flexbox {
     display: flex;
-    justify-content: space-between;
 }
 
 /**************************************************/
@@ -48,71 +47,26 @@ body {
 /**************************************************/
 
 header {
-    background-color: #042A2B;
-    line-height: var(--app-header-line-height);
-    height: 56px;
-    text-align: center;
-}
-
-header .flexbox > * {
-    width: 33%;
+    /* background-color: #042A2B; */
+    line-height: 112px;
+    height: 112px;
+    position: absolute;
+    width: 100%;
 }
 
 header .title {
-    text-align: center;
+    line-height: 112px;
 }
 
-header h1 {
+header h1, header i {
     font-size: 25px;
     font-weight: 600;
-    color: var(--app-light-text-color);
+    color: #EFD6AC;
 }
 
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li + li {
-    margin-left: 18px;
-}
-
-nav ul li a {
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: var(--app-letter-spacing);
-    cursor: pointer;
-    transition: color 0.25s ease-in-out;
-    text-decoration: none;
-    color: var(--app-light-text-color);
-    position: relative;
-}
-
-/* Scale from center */
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0.1em;
-    background-color: var(--app-light-text-color);
-    opacity: 0;
-    transition: opacity 300ms, transform 300ms;
-}
-
-nav ul li a::after {
-    opacity: 1;
-    transform: scale(0);
-    transform-origin: center;
-}
-
-nav ul li a:hover::after,
-nav ul li a:focus::after{
-    transform: scale(1);
+header i {
+    margin-top: 45px;
+    margin-right: 10px;
 }
 
 /**************************************************/
@@ -141,6 +95,7 @@ nav ul li a:focus::after{
 .container .details .lat-long {
     color: var(--app-dark-text-color);
     text-align: left;
+    margin-bottom: 20px;
 }
 
 section {
@@ -157,7 +112,7 @@ section .overlay {
 }
 
 section .overlay .loader {
-    border: 5px solid var(--app-blue);
+    border: 5px solid #2B4162;
     border-top: 5px solid rgba(0, 0, 0, 0.01);
     border-radius: 50%;
     width: 35px;
@@ -173,54 +128,85 @@ section #map {
 }
 
 /**************************************************/
-/*****          Overlay Screens              ******/
+/*****        ABOUT US                       ******/
 /**************************************************/
 
-dialog {
-    width: 410px;
-    background-color: var(--app-light-bg);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
-    border-radius: 10px;
-    padding: 20px;
-    animation: appearDown 0.25s ease-out;
+.hero {
+    width: 100%;
+    height: 400px;
+    background: url("../images/hero.jpg") center center / cover no-repeat;
 }
 
-dialog::backdrop {
-    background-color: rgb(13 16 19 / 0.3);
-    backdrop-filter: blur(10px);
+.about-us-container {
+    position: relative;
+    padding-top: 70px;
 }
-
-dialog h2 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--app-dark-blue);
-    margin-bottom: 10px;
+  
+.slides {
+    display: none;
+    padding: 80px;
     text-align: center;
 }
 
-dialog .about span {
-    font-size: 17px;
+.slides p {
+    color: var(--app-light-text-color);
+    font-size: 18px;
     font-weight: 500;
-    color: var(--app-purple);
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0px;
+    line-height: 56px;
 }
 
-dialog .about p {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--app-dark-text-color);
-    margin-bottom: 15px;
+.slides p span {
+    color: #EFD6AC;
+    font-size: 20px;
+    font-weight: 700;
 }
-
-dialog .how-to {    
-    border-top: 1px solid rgba(35, 46, 209, 0.3);
-    padding: 15px;
+  
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -25px;
+    padding: 16px;
+    color: #888;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
 }
-
-dialog .how-to ul {
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--app-dark-text-color);
-    margin-bottom: 15px;
+  
+.next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+.prev:hover, .next:hover {
+    color: white;
+}
+  
+.dot-container {
+    text-align: center;
+    padding: 20px;
+}
+  
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--app-light-bg);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+.active, .dot:hover {
+    background-color: #EFD6AC;
 }
 
 /**************************************************/
@@ -232,6 +218,10 @@ footer {
     background-color: #FCFCFC;
     padding: 36px 0;
     z-index: 9999;
+}
+
+footer .flexbox {
+    justify-content: space-between;
 }
 
 /* Footer Social */
@@ -247,21 +237,14 @@ footer .social-icons ul li + li {
     margin-left: 20px;
 }
 
-footer .social-icons ul li {
-    font-size: 17px;
-    color: #042A2B;
-    font-weight: 400;
-    letter-spacing: var(--app-letter-spacing);
-    line-height: var(--app-footer-line-height);
-}
-
 footer .social-icons ul li a {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: var(--app-letter-spacing);
+    line-height: var(--app-footer-line-height);
     cursor: pointer;
     text-decoration: none;
-    color: #042A2B;
+    color: #2B4162;
 }
 
 /* Icon Hover effect */
@@ -272,7 +255,7 @@ footer .social-icons ul li:hover {
 /* Footer Copyright */
 footer .copyright p {
     font-size: 17px;
-    color: #042A2B;
+    color: #2B4162;
     font-weight: 400;
     letter-spacing: var(--app-letter-spacing);
     line-height: var(--app-footer-line-height);
@@ -281,17 +264,6 @@ footer .copyright p {
 /**************************************************/
 /*****       Animations                      ******/
 /**************************************************/
-
-@keyframes appearDown {
-    from {
-        opacity: 0;
-        transform: translate(0px, -10px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

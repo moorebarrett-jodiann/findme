@@ -22,18 +22,37 @@
     <body>
         <main> 
             <header>
-                <div class="container flexbox">
-                    <div></div>
-                    <div class="title">
-                        <h1><i class="fa-solid fa-magnifying-glass-location"></i> Find Me</h1>
+                <div class="container">
+                    <div class="title flexbox">
+                        <i class="fa-solid fa-magnifying-glass-location"></i> 
+                        <h1>Find Me</h1>
                     </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#" class="about">About Us</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </header>     
+            <div class="hero">
+                <div class="about-us-container container">
+                    <div class="slides">
+                        <p><span>Find Me</span> helps you view the current location of your device.</p>
+                    </div>
+                    <div class="slides">
+                        <p>We use <span>MapBox API</span> to generate the map</p>
+                    </div>
+                    <div class="slides">
+                        <p>We use <span>HTML Geolocation</span> to extract the latitude 
+                            and longitude coordinates of your device.
+                        </p>
+                    </div>
+                    <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <!-- Dots/bullets/indicators -->
+                    <div class="dot-container">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+            </div>        
             <div class="container">
                 <div class="details">
                     <div class="heading">
@@ -46,30 +65,13 @@
                         <p>Longitude: <span class="longitude"></span></p>
                     </div>
                 </div>           
-            </div>            
-            <section>
+            </div>    
+            <section class="container">
                 <div class="overlay">
                     <div class="loader"></div>
                 </div>
                 <div id='map'></div>
             </section> 
-            <dialog>
-                <h2>About Us</h2>
-                <div class="about">
-                    <p><span>Find Me</span> helps you view the current location of your device. See your laptop, phone, tablet or watch on a map.</p>
-                    <p>We use the <span>MapBox API</span> to generate the map and <span>HTML Geolocation</span> to extract the latitude 
-                        and longitude coordinates of your device.
-                    </p>
-                </div>
-                <div class="how-to">
-                    <h4>How to find your device location</h4>
-                    <ul>
-                        <li>Allow the browser to access your location</li>
-                        <li>If you are using a mobile device, enable location services (GPS location sharing with your browser) 
-                            for the best current location accuracy</li>
-                    </ul>
-                </div>
-            </dialog>
             <footer>
                 <div class="container flexbox">
                     <div class="social-icons">

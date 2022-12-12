@@ -16,6 +16,10 @@ function select(selector, parent = document) {
     return parent.querySelector(selector);
 }
 
+function selectAll(selector, parent = document) {  
+    return parent.querySelectorAll(selector);
+}
+
 /**-----------------------------------DATA------------------------------------ */
 
 const longitudeCoords = select('.longitude');
@@ -48,7 +52,8 @@ function getLocation(position) {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [longitude, latitude], // starting position [lng, lat]
-        zoom: 15, // starting zoom
+        zoom: 15, // starting zoom,
+        pitch: 60 // pitch in degrees
     });
     
     overlay.style.display = 'none';
@@ -83,19 +88,35 @@ if(navigator.geolocation) {
 
 /**--------------------------------------------------------------------------- */
 
-/**------------------------------About Us Modal------------------------------- */
+/**--------------------------About Us Slideshow------------------------------- */
 
-onEvent('click', aboutUs, function () {
-    dialog.showModal();
-});
+let slideIndex = 1;
+showSlides(slideIndex);
 
-onEvent('click', dialog, function(event) {
-    const rect = this.getBoundingClientRect();
-    
-    if(event.clientY < rect.top || event.clientY > rect.bottom || 
-        event.clientX < rect.left || event.clientX < rect.right) {
-            dialog.close();
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let slides = selectAll('.slides');
+    let dots = selectAll('.dot');
+
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
     }
-});
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+}
 
 /**--------------------------------------------------------------------------- */
