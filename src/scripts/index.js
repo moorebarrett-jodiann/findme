@@ -16,8 +16,6 @@ function select(selector, parent = document) {
     return parent.querySelector(selector);
 }
 
-/**--------------------------------------------------------------------------- */
-
 /**-----------------------------------DATA------------------------------------ */
 
 const longitudeCoords = select('.longitude');
@@ -25,6 +23,13 @@ const latitudeCoords = select('.latitude');
 
 const dialog = select('dialog');
 const aboutUs = select('.about');
+
+const overlay = select('.overlay');
+
+// Map interface handlers
+const scrollZoom = 'scrollZoom';
+const boxZoom = 'boxZoom';
+const doubleClickZoom = 'doubleClickZoom';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWFubmJhcnJldHQiLCJhIjoiY2xiZ3JxMzJmMGFjcDN2bW1ydjlpc2NjYyJ9.pgkAM_oUNu6TpYp8ScH9Ow';
 const options = {
@@ -43,14 +48,23 @@ function getLocation(position) {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [longitude, latitude], // starting position [lng, lat]
-        zoom: 12, // starting zoom
+        zoom: 15, // starting zoom
     });
     
+    overlay.style.display = 'none';
     const watermark1 = select('.mapboxgl-ctrl-bottom-left');
     const watermark2 = select('.mapboxgl-ctrl-bottom-right');
     watermark1.style.display = 'none';
     watermark2.style.display = 'none';
 
+    //disable scrollZoom handlers
+    map[scrollZoom].disable();
+    map[boxZoom].disable();
+    map[doubleClickZoom].disable();
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+    
     // Default Marker and add it to the map.
     const marker = new mapboxgl.Marker({ color: '#232ED1' })
     .setLngLat([longitude, latitude])
@@ -67,7 +81,9 @@ if(navigator.geolocation) {
     console.log('Geolocation is not supported by your browser');
 }
 
-/**---------------------------About Us Modal------------------------------- */
+/**--------------------------------------------------------------------------- */
+
+/**------------------------------About Us Modal------------------------------- */
 
 onEvent('click', aboutUs, function () {
     dialog.showModal();
@@ -75,9 +91,11 @@ onEvent('click', aboutUs, function () {
 
 onEvent('click', dialog, function(event) {
     const rect = this.getBoundingClientRect();
-
+    
     if(event.clientY < rect.top || event.clientY > rect.bottom || 
         event.clientX < rect.left || event.clientX < rect.right) {
-        dialog.close();
+            dialog.close();
     }
 });
+
+/**--------------------------------------------------------------------------- */

@@ -23,12 +23,13 @@
         <main> 
             <header>
                 <div class="container flexbox">
+                    <div></div>
                     <div class="title">
                         <h1><i class="fa-solid fa-magnifying-glass-location"></i> Find Me</h1>
                     </div>
                     <nav>
                         <ul>
-                            <li><a href="#" class="about">About</a></li>
+                            <li><a href="#" class="about">About Us</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -37,7 +38,7 @@
                 <div class="details">
                     <div class="heading">
                         <h1>My location now</h1>
-                        <p>Your current location right now is shown on the map below as a blue marker.</p>
+                        <p>Your current location right now is shown on the map below as a blue <i class="fa-solid fa-location-dot"></i> marker.</p>
                     </div>
                     <div class="lat-long">
                         <h3>What are my coordinates?</h3>
@@ -47,6 +48,9 @@
                 </div>           
             </div>            
             <section>
+                <div class="overlay">
+                    <div class="loader"></div>
+                </div>
                 <div id='map'></div>
             </section> 
             <dialog>

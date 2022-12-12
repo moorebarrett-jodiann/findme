@@ -40,6 +40,7 @@ body {
 
 .flexbox {
     display: flex;
+    justify-content: space-between;
 }
 
 /**************************************************/
@@ -47,13 +48,17 @@ body {
 /**************************************************/
 
 header {
-    background-color: var(--app-blue);
+    background-color: #042A2B;
     line-height: var(--app-header-line-height);
     height: 56px;
+    text-align: center;
+}
+
+header .flexbox > * {
+    width: 33%;
 }
 
 header .title {
-    width: 100%;
     text-align: center;
 }
 
@@ -129,6 +134,10 @@ nav ul li a:focus::after{
     color: var(--app-dark-text-color);
 }
 
+.container .details .heading p .fa-location-dot {
+    color: var(--app-blue);
+}
+
 .container .details .lat-long {
     color: var(--app-dark-text-color);
     text-align: left;
@@ -138,6 +147,23 @@ section {
     min-height: calc(100vh - 56px - 112px);
     position: relative;
 }
+
+section .overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.03);
+    display: grid;
+    place-items: center;
+}
+
+section .overlay .loader {
+    border: 5px solid var(--app-blue);
+    border-top: 5px solid rgba(0, 0, 0, 0.01);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+} 
 
 section #map { 
     position: absolute;
@@ -203,13 +229,9 @@ dialog .how-to ul {
 
 footer {
     height: 112px;
-    background-color: var(--app-purple);
+    background-color: #FCFCFC;
     padding: 36px 0;
     z-index: 9999;
-}
-
-footer .flexbox {
-    justify-content: space-between;
 }
 
 /* Footer Social */
@@ -227,7 +249,7 @@ footer .social-icons ul li + li {
 
 footer .social-icons ul li {
     font-size: 17px;
-    color: var(--app-light-text-color);
+    color: #042A2B;
     font-weight: 400;
     letter-spacing: var(--app-letter-spacing);
     line-height: var(--app-footer-line-height);
@@ -239,7 +261,7 @@ footer .social-icons ul li a {
     letter-spacing: var(--app-letter-spacing);
     cursor: pointer;
     text-decoration: none;
-    color: var(--app-light-text-color);
+    color: #042A2B;
 }
 
 /* Icon Hover effect */
@@ -250,7 +272,7 @@ footer .social-icons ul li:hover {
 /* Footer Copyright */
 footer .copyright p {
     font-size: 17px;
-    color: var(--app-light-text-color);
+    color: #042A2B;
     font-weight: 400;
     letter-spacing: var(--app-letter-spacing);
     line-height: var(--app-footer-line-height);
@@ -269,4 +291,9 @@ footer .copyright p {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
