@@ -110,7 +110,7 @@ section .overlay {
 
 section .overlay .loader {
     border: 5px solid var(--app-dark-blue);
-    border-top: 5px solid rgba(0, 0, 0, 0.01);
+    border-top: 5px solid transparent;
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -122,6 +122,25 @@ section #map {
     top: 0;
     bottom: 0;
     width: 100%;
+}
+
+section #fly {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    height: 40px;
+    width: 70px;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: background-color 0.25s ease-in-out;
+    background-color: var(--app-dark-blue);
+    color: #fff;
+    padding: 0 10px;
 }
 
 /**************************************************/

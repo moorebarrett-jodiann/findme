@@ -29,11 +29,13 @@ const dialog = select('dialog');
 const aboutUs = select('.about');
 
 const overlay = select('.overlay');
+const fly = select('#fly');
 
 // Map interface handlers
 const scrollZoom = 'scrollZoom';
 const boxZoom = 'boxZoom';
 const doubleClickZoom = 'doubleClickZoom';
+const dragRotate = 'dragRotate';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9kaWFubmJhcnJldHQiLCJhIjoiY2xiZ3JxMzJmMGFjcDN2bW1ydjlpc2NjYyJ9.pgkAM_oUNu6TpYp8ScH9Ow';
 const options = {
@@ -57,15 +59,25 @@ function getLocation(position) {
     });
     
     overlay.style.display = 'none';
+    fly.style.display = 'block';
     const watermark1 = select('.mapboxgl-ctrl-bottom-left');
     const watermark2 = select('.mapboxgl-ctrl-bottom-right');
     watermark1.style.display = 'none';
     watermark2.style.display = 'none';
 
+    onEvent('click', fly, function(){
+        // Fly to a random location
+        map.flyTo({
+            center: [longitude, latitude],
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+    });
+
     //disable scrollZoom handlers
     map[scrollZoom].disable();
     map[boxZoom].disable();
     map[doubleClickZoom].disable();
+    map[dragRotate].enable();
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
