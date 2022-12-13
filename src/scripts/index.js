@@ -66,7 +66,7 @@ function getLocation(position) {
     watermark2.style.display = 'none';
 
     onEvent('click', fly, function(){
-        // Fly to a random location
+        // Fly to center location
         map.flyTo({
             center: [longitude, latitude],
             essential: true // this animation is considered essential with respect to prefers-reduced-motion
