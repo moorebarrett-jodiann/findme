@@ -36,6 +36,12 @@ body {
 /*****       Main                            ******/
 /**************************************************/
 
+main {
+    min-width: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+
 .flexbox {
     display: flex;
 }
@@ -126,11 +132,11 @@ section #map {
 
 section #fly {
     display: none;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
+    position: relative;
+    bottom: 0;
+    top: 36rem;
+    left: 88%;
     height: 40px;
-    width: 70px;
     text-align: center;
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
