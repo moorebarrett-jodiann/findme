@@ -240,6 +240,7 @@ footer {
     background-color: #FCFCFC;
     padding: 36px 0;
     z-index: 9999;
+    margin-top: 40px;
 }
 
 footer .flexbox {
